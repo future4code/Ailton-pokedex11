@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { goToDetailsPage } from '../Router/coordinator'
 import styled from 'styled-components'
+import Header from '../components/Header'
 
 const Card = styled.div`
 border: 1px solid black;
@@ -20,9 +21,9 @@ export default function Home() {
     },[])
     
     const getPokemons = () =>{
-        axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151')
+        axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=30')
         .then((res)=>{setPokemon(res.data.results)})
-        .then((err)=>{} )
+        .then(()=>{} )
     }
     
     
@@ -36,6 +37,7 @@ export default function Home() {
     
       return (
         <div>
+            <Header/>
            {pokeList}
         </div>
       )
