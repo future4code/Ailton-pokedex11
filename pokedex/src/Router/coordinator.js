@@ -1,3 +1,7 @@
+export const goToHomePage = (navigate =>{
+    navigate("/")
+})
+
 export const backOnePage= (navigate) =>{
     navigate(-1)
 }

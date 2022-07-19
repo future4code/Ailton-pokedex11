@@ -4,6 +4,8 @@ import Home from "../Pages/Home.js";
 import Pokedex from "../Pages/Pokedex";
 import Details from "../Pages/Details";
 
+
+
 export default function Router() {
   return (
     <BrowserRouter>
