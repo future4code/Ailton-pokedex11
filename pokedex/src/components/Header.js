@@ -1,22 +1,49 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import styled from 'styled-components'
-import { goToPokedex } from '../Router/coordinator'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { goToPokedex } from "../Router/coordinator";
+import Titulo from "../components/poketitulo.png";
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  };
+  `;
 
 const Head = styled.div`
-display: flex;
-border: 1px solid black;
-width: 100%;
-height: 15vh;
+height: 18vh;
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dotted black;
+  padding-right: 15px;
+  padding-left: 540px;
+`;
 
+const BotaoHeader = styled.button`
+background: #33A4F5;
+border-radius: 8px;
+border: 1px solid #33A4F5;
+width: 160px;
+height: 40px;
+font-family: 'Tahoma';
+color: white;
+font-size: large;
 `
 
 export default function Header() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
-    <Head>
-        <h1>Header</h1>
-    <button onClick={()=>goToPokedex(navigate)}>Pokedex </button>
-    </Head>
-  )
+    <div>
+      <GlobalStyle></GlobalStyle>
+      <Head>
+        <img src={Titulo} width={250} />
+        <BotaoHeader onClick={() => goToPokedex(navigate)}> Pokédex </BotaoHeader>
+      </Head>
+    </div>
+  );
 }
