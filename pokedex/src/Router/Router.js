@@ -8,12 +8,15 @@ import Details from "../Pages/Details";
 
 export default function Router() {
   const [pokedex, setPokedex] = React.useState([])
-console.log(pokedex)
+
+
+
+
   return (
     <BrowserRouter>
     <Routes>
         <Route index element={<Home setPokedex={setPokedex}/>}/>
-        <Route path ="pokedex" element={<Pokedex pokedex={pokedex}/> }/>
+        <Route path ="pokedex" element={<Pokedex pokedex={pokedex} setPokedex={setPokedex}/> }/>
         <Route path ="/:id" element={<Details/>}/>
     </Routes>
     </BrowserRouter>

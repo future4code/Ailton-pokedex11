@@ -114,7 +114,7 @@ export default function PokeCard({ poke, setPokedex }) {
       <button
         disabled={click && "disabled"}
         onClick={() => {
-          setPokedex((prevState) => [...prevState, poke]);
+          setPokedex((prevState) => [...prevState,poke]);
           setClick(true);
         }}
       >
