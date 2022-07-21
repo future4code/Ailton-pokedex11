@@ -13,7 +13,7 @@ console.log(pokedex)
     <BrowserRouter>
     <Routes>
         <Route index element={<Home setPokedex={setPokedex}/>}/>
-        <Route path ="pokedex" element={<Pokedex/>}/>
+        <Route path ="pokedex" element={<Pokedex pokedex={pokedex}/> }/>
         <Route path ="/:id" element={<Details/>}/>
     </Routes>
     </BrowserRouter>
