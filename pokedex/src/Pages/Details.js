@@ -1,11 +1,11 @@
 import React, { Profiler } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { goToHomePage } from '../Router/coordinator'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useState,useEffect } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
+import LinearProgress from "@mui/material/LinearProgress"
 
 
 const CardDetalhes = styled.div`
@@ -104,11 +104,17 @@ export default function Details() {
       <DivBaseStats>
       <h4>Base States</h4>
     <p>{pokemon.stats === undefined ? "" : pokemon.stats[0].stat.name}: {pokemon.stats === undefined ? <p>carregando</p> : pokemon.stats[0].base_stat}</p>
+    <LinearProgress variant="determinate"  value={pokemon.stats !== undefined ?pokemon.stats[0].base_stat:"" } />
     <p>{pokemon.stats === undefined ? "" : pokemon.stats[1].stat.name}: {pokemon.stats === undefined ? <p>carregando</p> : pokemon.stats[1].base_stat}</p>
+    <LinearProgress variant="determinate"  value={pokemon.stats !== undefined ?pokemon.stats[1].base_stat:"" } />
     <p>{pokemon.stats === undefined ? "" : pokemon.stats[2].stat.name}: {pokemon.stats === undefined ? <p>carregando</p> : pokemon.stats[2].base_stat}</p>
+    <LinearProgress variant="determinate"  value={pokemon.stats !== undefined ?pokemon.stats[2].base_stat:"" } />
     <p>{pokemon.stats === undefined ? "" : pokemon.stats[3].stat.name}: {pokemon.stats === undefined ? <p>carregando</p> : pokemon.stats[3].base_stat}</p>
+    <LinearProgress variant="determinate"  value={pokemon.stats !== undefined ?pokemon.stats[3].base_stat:"" } />
     <p>{pokemon.stats === undefined ? "" : pokemon.stats[4].stat.name}: {pokemon.stats === undefined ? <p>carregando</p> : pokemon.stats[4].base_stat}</p>
+    <LinearProgress variant="determinate"  value={pokemon.stats !== undefined ?pokemon.stats[4].base_stat:"" } />
     <p>{pokemon.stats === undefined ? "" : pokemon.stats[5].stat.name}: {pokemon.stats === undefined ? <p>carregando</p> : pokemon.stats[5].base_stat}</p>
+    <LinearProgress variant="determinate"  value={pokemon.stats !== undefined ?pokemon.stats[5].base_stat:"" } />
     </DivBaseStats>
 
     <div>
@@ -137,7 +143,6 @@ export default function Details() {
     </div>
     
     </CardDetalhes>
-      <button onClick={()=>goToHomePage(navigate)}>Home</button>
       </div>
   )
 }
