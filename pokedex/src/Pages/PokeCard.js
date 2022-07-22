@@ -5,6 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const Card = styled.div`
 display: flex;
+flex-direction: column;
+flex-wrap: wrap;
   border: 1px solid black;
   height: 210px;
   width: 440px;
@@ -17,14 +19,15 @@ const NomeCard = styled.div`
   font-family: "Tahoma";
   display: flex;
   flex-direction: column;
-
+  
   font-size: medium;
   padding-left: 10px;
+  margin-right: 200px;
 `;
 const DivImagem = styled.div`
   display: flex;
-  align-items: flex-end;
-  justify-content: end;
+  align-items: flex-start;
+
   
 `;
 const DivTipos = styled.div`
@@ -41,6 +44,11 @@ const DivTipos = styled.div`
 
 const DivBtn = styled.div`
 display: flex;
+justify-content: flex-end;
+button{
+  height: 30px;
+  border-radius: 30px;
+}
 `
   
 const corBackGround = (type) => {
@@ -106,14 +114,6 @@ export default function PokeCard({ poke, setPokedex }) {
         {poke.name.slice(1)}
         </p>
       </NomeCard>
-      <DivImagem>
-        <img
-          alt={poke.name}
-          src={poke.sprites.other["official-artwork"].front_default}
-          height={110}
-          width={110}
-        />
-      </DivImagem>
       <DivTipos>
         <p>{poke.types[0].type.name}</p>
         <p>{poke.types[1]?.type.name}</p>
@@ -127,9 +127,19 @@ export default function PokeCard({ poke, setPokedex }) {
           setClick(true);
         }}
       >
-        Adicionar na pokedex
+        Capturar!
       </button>
       </DivBtn>
+      <DivImagem>
+        <img
+          alt={poke.name}
+          src={poke.sprites.other["official-artwork"].front_default}
+          height={130}
+          width={130}
+        />
+      </DivImagem>
+     
+    
     </Card>
   );
 }
