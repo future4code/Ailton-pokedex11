@@ -37,6 +37,7 @@ const DivTipos = styled.div`
     border-radius: 8px;
   }
 `;
+  
 const corBackGround = (type) => {
   switch (type) {
     case "normal":

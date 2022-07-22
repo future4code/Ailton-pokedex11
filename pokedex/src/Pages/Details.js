@@ -26,6 +26,49 @@ display: flex;
 flex-direction: column;
 `
 
+const corBackGround = (type) => {
+  switch (type) {
+    case "normal":
+      return "#BF9762";
+    case "fighting":
+      return "#CE4069";
+    case "flying":
+      return "#6892B0";
+    case "poison":
+      return "#AD61AE";
+    case "ground":
+      return "#D97745";
+    case "rock":
+      return "#C7B78B";
+    case "bug":
+      return "#76A866";
+    case "ghost":
+      return "#5269AC";
+    case "steel":
+      return "#BBBBBB";
+    case "fire":
+      return "#EAAB7D";
+    case "water":
+      return "#71C3FF";
+    case "grass":
+      return "#729F92";
+    case "electric":
+      return "#F4D23B";
+    case "psychic":
+      return "#F67176";
+    case "ice":
+      return "#74CEC0";
+    case "dragon":
+      return "#0A6CBF";
+    case "dark":
+      return "#5C5365";
+    case "fairy":
+      return "#EC8FE6";
+    default:
+      return "black";
+  }
+};
+
 export default function Details() {
   const params = useParams();
   const [pokemon, setPokemon] = useState([]);
@@ -48,7 +91,11 @@ export default function Details() {
     <div>
       <Header/>
       <h1>Detalhes</h1>
-      <CardDetalhes>
+      <CardDetalhes  key={pokemon.id}
+      style={{
+        backgroundColor: corBackGround(pokemon.types === undefined ? "" : pokemon.types[0].type.name),
+        color: "white",
+      }}>
       <DivImgs>
       <img src={pokemon.sprites === undefined ? "": pokemon.sprites.front_default}/>
       <img src={pokemon.sprites === undefined ? "": pokemon.sprites.back_default}/>
