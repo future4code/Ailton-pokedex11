@@ -20,6 +20,7 @@ const Main = styled.main`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  
 `
 export default function Home(props) {
   const [pokemon, setPokemon] = useState([])

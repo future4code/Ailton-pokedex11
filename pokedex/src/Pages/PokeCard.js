@@ -9,18 +9,33 @@ const Card = styled.div`
   border-radius: 12px;
   margin-bottom: 6px;
 `
-const NomeCard = styled.div`
-  p {
+
+const NomeCard = styled.p`
     font-family: 'Tahoma';
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
     /* gap: 20px; */
-    font-size: medium;
+    font-size: 20px;
     padding-left: 10px;
-  }
+    position: absolute;
+    margin-top: 50px;
+    
 `
+const NumeroCard = styled.p`
+  font-family: 'Tahoma';
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    /* gap: 20px; */
+    font-size: 22px;
+    padding-left: 10px;
+    position: absolute;
+  
+`
+
 const DivImagem = styled.div`
   display: flex;
   align-items: flex-end;
@@ -32,6 +47,8 @@ const DivTipos = styled.div`
   align-items: flex-start;
   padding: 5px 8px;
   gap: 17px;
+  position: absolute;
+
   p {
     border: 1px dashed rgba(255, 255, 255, 0.47);
     border-radius: 8px;
@@ -40,12 +57,40 @@ const DivTipos = styled.div`
 const DivInfo = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-content: space-between;
   margin-right: 5px;
+  align-items: center;
+ 
 `
 const DivBotão = styled.div`
-  /* margin-left: 45%; */
+  display: flex;
+  align-items: flex-start;
+  margin-left: 5px;
+  justify-content: space-between;
+  margin-top: 85px;
+  margin-right: 5px;
 `
+const BtnDetalhes = styled.button`
+display: flex;
+flex-direction: row;
+
+padding: 4px 10px;
+border-radius:8px ;
+background-color: white;
+border: 1px solid white;
+`
+
+const BtnCapturar = styled.button`
+display: flex;
+flex-direction: row;
+margin-left: 10px;
+padding: 4px 10px;
+border-radius:8px ;
+background-color: white;
+border: 1px solid white;
+margin-bottom:10px;
+`
+
 const corBackGround = (type) => {
   switch (type) {
     case 'normal':
@@ -99,12 +144,14 @@ export default function PokeCard({ poke, setPokedex }) {
         color: 'white',
       }}
     >
-      <NomeCard>
-        <p>
+      <div>
+        <NumeroCard>
           <strong>#{poke.id}</strong>
-        </p>
-        <p>{poke.name}</p>
-      </NomeCard>
+        </NumeroCard>
+        <NomeCard>
+        {poke.name[0].toUpperCase()}{poke.name.slice(1)}
+        </NomeCard>
+        </div>
       <DivImagem>
         <img
           alt={poke.name}
@@ -119,19 +166,21 @@ export default function PokeCard({ poke, setPokedex }) {
           <p>{poke.types[0].type.name}</p>
           <p>{poke.types[1]?.type.name}</p>
         </DivTipos>
-        <DivBotão>
-          <button onClick={() => navigate(`/${poke.id}`)}>Detalhes</button>
-          <button
+
+      </DivInfo>
+      <DivBotão>
+          <BtnDetalhes onClick={() => navigate(`/${poke.id}`)}>Detalhes</BtnDetalhes>
+          <BtnCapturar
             disabled={click && 'disabled'}
             onClick={() => {
               setPokedex((prevState) => [...prevState, poke])
               setClick(true)
             }}
           >
-            Adicionar na pokedex
-          </button>
+           Capturar!
+          </BtnCapturar>
         </DivBotão>
-      </DivInfo>
+    
     </Card>
   )
 }

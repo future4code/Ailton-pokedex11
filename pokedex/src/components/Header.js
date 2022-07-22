@@ -41,7 +41,6 @@ export default function Header() {
     <div>
       <GlobalStyle></GlobalStyle>
       <Head>
-      <BotaoHeader onClick={()=>goToHomePage(navigate)}>Home</BotaoHeader>
         <img src={Titulo} width={250} />
         <BotaoHeader onClick={() => goToPokedex(navigate)}> Pokédex </BotaoHeader>
       </Head>
