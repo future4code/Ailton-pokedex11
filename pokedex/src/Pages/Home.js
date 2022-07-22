@@ -45,10 +45,6 @@ export default function Home(props) {
     <div>
       <GlobalStyle></GlobalStyle>
       <Header />
-      <div>
-        <button></button>
-        <button></button>
-      </div>
       <Main>
         {pokemon &&
           pokemon.map((poke) => {
