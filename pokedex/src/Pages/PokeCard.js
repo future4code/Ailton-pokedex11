@@ -37,6 +37,7 @@ const DivTipos = styled.div`
     border-radius: 8px;
   }
 `;
+  
 const corBackGround = (type) => {
   switch (type) {
     case "normal":
@@ -114,7 +115,7 @@ export default function PokeCard({ poke, setPokedex }) {
       <button
         disabled={click && "disabled"}
         onClick={() => {
-          setPokedex((prevState) => [...prevState, poke]);
+          setPokedex((prevState) => [...prevState,poke]);
           setClick(true);
         }}
       >

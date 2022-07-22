@@ -39,24 +39,7 @@ export default function Home(props) {
     const finalArray = await Promise.all(allPokemons)
     setPokemon(finalArray)
   };
-console.log("O que tá rolando?", pokemon)
-  // useEffect(() => {
-  //   const listaPokemon = [];
-  //   pokeList.map((poke) => {
-  //     axios
-  //       .get(`https://pokeapi.co/api/v2/pokemon/${poke.name}`)
-  //       .then((res) => {
-  //         listaPokemon.push(res.data);
-  //         console.log(res.data);
-  //         if (listaPokemon.length === 30) {
-  //           setPokemon(listaPokemon);
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   });
-  // }, [pokeList]);
+
 
   return (
     <div>
