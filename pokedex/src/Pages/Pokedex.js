@@ -1,6 +1,7 @@
 import React, {useState,useEffect}from 'react'
 import styled from 'styled-components'
 import Header from '../components/Header'
+import HeaderPokedex from '../components/HeaderPokedex';
 
 export default function Pokedex(props) {
   const [listaPokemon, setListaPokemon] = useState([])
@@ -133,7 +134,7 @@ const DivTipos = styled.div`
 
   return (
     <div>
-      <Header/>
+      <HeaderPokedex/>
       <h1>Pokedex</h1>
       <Main>
       {pokedexlist}
