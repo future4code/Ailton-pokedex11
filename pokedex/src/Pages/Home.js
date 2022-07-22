@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
-import { goToDetailsPage } from "../Router/coordinator";
+import axios from "axios";  
 import styled from "styled-components";
 import Header from "../components/Header";
 import { createGlobalStyle } from "styled-components";
@@ -18,6 +16,9 @@ const Main = styled.main`
   width: 100%;
   margin-top: 6px;
   margin-left: 5px;
+  display: grid;
+  gap:10px;
+  grid-template-columns: repeat(3,1fr);
 `;
 
 export default function Home(props) {
@@ -45,11 +46,11 @@ export default function Home(props) {
       <GlobalStyle></GlobalStyle>
       <Header />
       <Main>
-        {pokemon &&
+      {pokemon &&
           pokemon.map((poke) => {
             return <PokeCard poke={poke} setPokedex={props.setPokedex} />;
           })}
-      </Main>
+           </Main>
     </div>
   );
 }

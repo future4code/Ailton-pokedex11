@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { goToPokedex } from "../Router/coordinator";
+import { goToPokedex, goToHomePage } from "../Router/coordinator";
 import Titulo from "../components/poketitulo.png";
 import { createGlobalStyle } from "styled-components";
 
@@ -21,7 +21,7 @@ height: 18vh;
   align-items: center;
   border-bottom: 1px dotted black;
   padding-right: 15px;
-  padding-left: 540px;
+  padding-left: 70px;
 `;
 
 const BotaoHeader = styled.button`
@@ -41,6 +41,7 @@ export default function Header() {
     <div>
       <GlobalStyle></GlobalStyle>
       <Head>
+      <BotaoHeader onClick={()=>goToHomePage(navigate)}>Home</BotaoHeader>
         <img src={Titulo} width={250} />
         <BotaoHeader onClick={() => goToPokedex(navigate)}> Pokédex </BotaoHeader>
       </Head>

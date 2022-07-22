@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Card = styled.div`
+display: flex;
   border: 1px solid black;
   height: 210px;
   width: 440px;
@@ -37,6 +38,10 @@ const DivTipos = styled.div`
     border-radius: 8px;
   }
 `;
+
+const DivBtn = styled.div`
+display: flex;
+`
   
 const corBackGround = (type) => {
   switch (type) {
@@ -113,6 +118,7 @@ export default function PokeCard({ poke, setPokedex }) {
         <p>{poke.types[0].type.name}</p>
         <p>{poke.types[1]?.type.name}</p>
       </DivTipos>
+      <DivBtn>
       <button onClick={() => navigate(`/${poke.id}`)}>Detalhes</button>
       <button
         disabled={click && "disabled"}
@@ -123,6 +129,7 @@ export default function PokeCard({ poke, setPokedex }) {
       >
         Adicionar na pokedex
       </button>
+      </DivBtn>
     </Card>
   );
 }

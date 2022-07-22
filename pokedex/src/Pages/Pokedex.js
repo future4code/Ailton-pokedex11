@@ -1,11 +1,8 @@
 import React, {useState,useEffect}from 'react'
-import { useNavigate,useParams } from 'react-router-dom'
-import { goToHomePage } from '../Router/coordinator'
 import styled from 'styled-components'
 import Header from '../components/Header'
 
 export default function Pokedex(props) {
-  const navigate = useNavigate()
   const [listaPokemon, setListaPokemon] = useState([])
 
   const Card = styled.div`
@@ -15,6 +12,15 @@ export default function Pokedex(props) {
   border-radius: 12px;
   margin-bottom: 6px;
 
+`;
+
+const Main = styled.main`
+  width: 100%;
+  margin-top: 6px;
+  margin-left: 5px;
+  display: grid;
+  gap:10px;
+  grid-template-columns: repeat(3,1fr);
 `;
 
 const NomeCard = styled.div`
@@ -129,11 +135,11 @@ const DivTipos = styled.div`
     <div>
       <Header/>
       <h1>Pokedex</h1>
-      <div>
+      <Main>
       {pokedexlist}
       
-      </div>
-    <button onClick={()=>goToHomePage(navigate)}>Home</button>
+      </Main>
+    
       
       </div>
   )

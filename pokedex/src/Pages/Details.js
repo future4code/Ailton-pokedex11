@@ -1,6 +1,5 @@
 import React, { Profiler } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { goToHomePage } from '../Router/coordinator'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useState,useEffect } from 'react';
@@ -144,7 +143,6 @@ export default function Details() {
     </div>
     
     </CardDetalhes>
-      <button onClick={()=>goToHomePage(navigate)}>Home</button>
       </div>
   )
 }
