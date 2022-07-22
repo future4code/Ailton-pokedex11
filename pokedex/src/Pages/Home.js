@@ -22,7 +22,6 @@ const Main = styled.main`
 
 export default function Home(props) {
   const [pokemon, setPokemon] = useState([]);
-  const [pokeList, setPokelist] = useState([]);
 
   useEffect(() => {
     getPokemons();

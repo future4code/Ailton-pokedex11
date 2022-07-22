@@ -97,7 +97,9 @@ export default function PokeCard({ poke, setPokedex }) {
         <p>
           <strong>#{poke.id}</strong>
         </p>
-        <p>{poke.name}</p>
+        <p>{poke.name[0].toUpperCase()}
+        {poke.name.slice(1)}
+        </p>
       </NomeCard>
       <DivImagem>
         <img
