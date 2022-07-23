@@ -2,20 +2,30 @@ import React, {useState,useEffect}from 'react'
 import styled from 'styled-components'
 import Header from '../components/Header'
 import HeaderPokedex from '../components/HeaderPokedex';
+import bug from '../imgs/Bug.png'
+import dark from '../imgs/Dark.png'
+import dragon from '../imgs/Dragon.png'
+import electric from '../imgs/Electric.png'
+import fairy from '../imgs/Fairy.png'
+import fighting from '../imgs/Fighting.png'
+import fire from '../imgs/Fire.png'
+import flying from '../imgs/Flying.png'
+import grass from '../imgs/Grass.png'
+import ground from '../imgs/Ground.png'
+import normal from '../imgs/Normal.png'
+import poison from '../imgs/Poison.png'
+import psychic from '../imgs/Psychic.png'
+import rock from '../imgs/Rock.png'
+import steel from '../imgs/Steel.png'
+import water from '../imgs/Water.png'
+import ghost from '../imgs/Ghost.png'
+import ice from '../imgs/Ice.png'
 
 export default function Pokedex(props) {
   const [listaPokemon, setListaPokemon] = useState([])
 
-  const Card = styled.div`
-  border: 1px solid black;
-  height: 210px;
-  width: 440px;
-  border-radius: 12px;
-  margin-bottom: 6px;
 
-`;
-
-const Main = styled.main`
+  const Main = styled.main`
   width: 100%;
   margin-top: 6px;
   margin-left: 5px;
@@ -24,31 +34,75 @@ const Main = styled.main`
   grid-template-columns: repeat(3,1fr);
 `;
 
-const NomeCard = styled.div`
-  font-family: "Tahoma";
-  display: flex;
-  flex-direction: column;
 
-  font-size: medium;
-  padding-left: 10px;
-`;
+const Card = styled.div`
+  border: 1px solid black;
+  height: 36vh;
+  width: 420px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+`
+
+const NomeCard = styled.p`
+    font-family: 'Tahoma';
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    /* gap: 20px; */
+    font-size: 20px;
+    padding-left: 10px;
+    position: absolute;
+    margin-top: 50px;
+    
+`
+const NumeroCard = styled.p`
+  font-family: 'Tahoma';
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    /* gap: 20px; */
+    font-size: 22px;
+    padding-left: 10px;
+    position: absolute;
+  
+`
+
 const DivImagem = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: end;
-  
-`;
+`
 const DivTipos = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 5px 8px;
   gap: 17px;
+  position: absolute;
+
   p {
     border: 1px dashed rgba(255, 255, 255, 0.47);
     border-radius: 8px;
   }
-`;
+`
+const DivInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  margin-right: 5px;
+  align-items: center;
+ 
+`
+const DivBotão = styled.div`
+  display: flex;
+  align-items: flex-start;
+  margin-left: 5px;
+  justify-content: space-between;
+  margin-top: 85px;
+  margin-right: 5px;
+`
 
   const corBackGround = (type) => {
     switch (type) {
@@ -107,14 +161,14 @@ const DivTipos = styled.div`
     style={{
       backgroundColor: corBackGround(poke.types[0].type.name),
     }}> 
-      <NomeCard>
-          <p>
+      <div>
+          <NumeroCard>
           <strong>#{poke.id}</strong>
-        </p>
-        <p>{poke.name[0].toUpperCase()}
+        </NumeroCard>
+        <NomeCard>{poke.name[0].toUpperCase()}
         {poke.name.slice(1)}
-        </p>
         </NomeCard>
+        </div>
         <DivImagem>
         <img
           alt={poke.name}
@@ -123,11 +177,56 @@ const DivTipos = styled.div`
           width={110}
         />
         </DivImagem>
+        <DivInfo>
         <DivTipos>
-             <p>{poke.types[0].type.name}</p>
-        <p>{poke.types[1]?.type.name}</p>
+        <p>{poke.types && poke.types.map((tipo)=>{
+      switch (tipo.type.name) {
+        case 'normal':
+          return <img src={normal}/>
+        case 'fighting':
+          return <img src={fighting}/>
+        case 'flying':
+          return <img src={flying}/>
+        case 'poison':
+          return <img src={poison}/>
+        case 'ground':
+          return <img src={ground}/>
+        case 'rock':
+          return <img src={rock}/>
+        case 'bug':
+          return <img src={bug}/>
+        case 'ghost':
+          return <img src={ghost}/>
+        case 'steel':
+          return <img src={steel}/>
+        case 'fire':
+          return <img src={fire}/>
+        case 'water':
+          return <img src={water}/>
+        case 'grass':
+          return <img src={grass}/>
+        case 'electric':
+          return <img src={electric}/>
+        case 'psychic':
+          return <img src={psychic}/>
+        case 'ice':
+          return <img src={ice}/>
+        case 'dragon':
+          return <img src={dragon}/>
+        case 'dark':
+          return <img src={dark}/>
+        case 'fairy':
+          return <img src={fairy}/>
+        default:
+          return 'black'
+      }
+
+    })}</p>
         </DivTipos>
-    <button onClick={()=>removerDaPokedex(poke)}>Remomer</button>
+        </DivInfo>
+        <DivBotão>
+    <button onClick={()=>removerDaPokedex(poke)}>Remover</button>
+    </DivBotão>
     </Card>
     
   })
@@ -138,7 +237,6 @@ const DivTipos = styled.div`
       <h1>Pokedex</h1>
       <Main>
       {pokedexlist}
-      
       </Main>
     
       
