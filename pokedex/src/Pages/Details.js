@@ -1,30 +1,62 @@
-import React, { Profiler } from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import { useState,useEffect } from 'react';
-import styled from 'styled-components';
-import Header from '../components/Header';
-import LinearProgress from "@mui/material/LinearProgress"
-
+import React, { Profiler } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import styled from "styled-components";
+import Header from "../components/Header";
+import LinearProgress from "@mui/material/LinearProgress";
 
 const CardDetalhes = styled.div`
-display: flex;
-border: 1px solid black;
-width: 90%;
-height: 80%;
-justify-content: space-between;
-`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  border-radius: 18px;
+  margin-left: 10%;
+  width: 80vw;
+  padding-right: 10px;
+  padding-bottom: 15px;
+`;
 
 const DivImgs = styled.div`
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 1px dashed #729f92;
+  margin-top: 5px;
+  border-radius: 6px;
+  margin-left: 8px;
+  height: fit-content;
+`;
+const DivInfos = styled.div`
+  height: 30vh;
 `
-
+const DivMoves = styled.div`
+  display: grid;
+  grid-column: initial;
+  background-color: white;
+  border-radius: 6px;
+  color: black;
+  width: 160px;
+  height: 35vh;
+  a {
+    border: 1px dashed #bcbcbc;
+    display: block;
+    block-size: 0.6cm;
+    background-color: #eeeeee;
+    border-radius: 10px;
+    width: 120px;
+    margin-left: 20px;
+  }
+`;
 const DivBaseStats = styled.div`
-display: flex;
-flex-direction: column;
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 
 const corBackGround = (type) => {
   switch (type) {
@@ -72,78 +104,189 @@ const corBackGround = (type) => {
 export default function Details() {
   const params = useParams();
   const [pokemon, setPokemon] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${params.id}`)
       .then((res) => {
-        console.log('Os detalhes:', res.data)
-      setPokemon(res.data)
+        console.log("Os detalhes:", res.data);
+        setPokemon(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-
   return (
     <div>
-      <Header/>
-      <h1>Detalhes</h1>
-      <CardDetalhes  key={pokemon.id}
-      style={{
-        backgroundColor: corBackGround(pokemon.types === undefined ? "" : pokemon.types[0].type.name),
-        color: "white",
-      }}>
-      <DivImgs>
-      <img src={pokemon.sprites === undefined ? "": pokemon.sprites.front_default}/>
-      <img src={pokemon.sprites === undefined ? "": pokemon.sprites.back_default}/>
+      <Header />
+      <main>
+        <div>
+          <h2>DETALHES</h2>
+        </div>
+        <CardDetalhes
+          key={pokemon.id}
+          style={{
+            backgroundColor: corBackGround(
+              pokemon.types === undefined ? "" : pokemon.types[0].type.name
+            ),
+            color: "white",
+          }}
+        >
+          <DivImgs>
+            <img
+              src={
+                pokemon.sprites === undefined
+                  ? ""
+                  : pokemon.sprites.front_default
+              }
+              height={130}
+              width={130}
+            />
+          </DivImgs>
+          <DivImgs>
+            <img
+              src={
+                pokemon.sprites === undefined
+                  ? ""
+                  : pokemon.sprites.back_default
+              }
+              height={130}
+              width={130}
+            />
+          </DivImgs>
+          <DivBaseStats>
+            <h3>Base States</h3>
+            <p>
+              {pokemon.stats === undefined ? "" : pokemon.stats[0].stat.name}:{" "}
+              {pokemon.stats === undefined ? (
+                <p>carregando</p>
+              ) : (
+                pokemon.stats[0].base_stat
+              )}
+            </p>
+            <LinearProgress
+              variant="determinate"
+              value={
+                pokemon.stats !== undefined ? pokemon.stats[0].base_stat : ""
+              }
+            />
+            <p>
+              {pokemon.stats === undefined ? "" : pokemon.stats[1].stat.name}:{" "}
+              {pokemon.stats === undefined ? (
+                <p>carregando</p>
+              ) : (
+                pokemon.stats[1].base_stat
+              )}
+            </p>
+            <LinearProgress
+              variant="determinate"
+              value={
+                pokemon.stats !== undefined ? pokemon.stats[1].base_stat : ""
+              }
+            />
+            <p>
+              {pokemon.stats === undefined ? "" : pokemon.stats[2].stat.name}:{" "}
+              {pokemon.stats === undefined ? (
+                <p>carregando</p>
+              ) : (
+                pokemon.stats[2].base_stat
+              )}
+            </p>
+            <LinearProgress
+              variant="determinate"
+              value={
+                pokemon.stats !== undefined ? pokemon.stats[2].base_stat : ""
+              }
+            />
+            <p>
+              {pokemon.stats === undefined ? "" : pokemon.stats[3].stat.name}:{" "}
+              {pokemon.stats === undefined ? (
+                <p>carregando</p>
+              ) : (
+                pokemon.stats[3].base_stat
+              )}
+            </p>
+            <LinearProgress
+              variant="determinate"
+              value={
+                pokemon.stats !== undefined ? pokemon.stats[3].base_stat : ""
+              }
+            />
+            <p>
+              {pokemon.stats === undefined ? "" : pokemon.stats[4].stat.name}:{" "}
+              {pokemon.stats === undefined ? (
+                <p>carregando</p>
+              ) : (
+                pokemon.stats[4].base_stat
+              )}
+            </p>
+            <LinearProgress
+              variant="determinate"
+              value={
+                pokemon.stats !== undefined ? pokemon.stats[4].base_stat : ""
+              }
+            />
+            <p>
+              {pokemon.stats === undefined ? "" : pokemon.stats[5].stat.name}:{" "}
+              {pokemon.stats === undefined ? (
+                <p>carregando</p>
+              ) : (
+                pokemon.stats[5].base_stat
+              )}
+            </p>
+            <LinearProgress
+              variant="determinate"
+              value={
+                pokemon.stats !== undefined ? pokemon.stats[5].base_stat : ""
+              }
+            />
+          </DivBaseStats>
 
-      </DivImgs>
-      <DivBaseStats>
-      <h4>Base States</h4>
-    <p>{pokemon.stats === undefined ? "" : pokemon.stats[0].stat.name}: {pokemon.stats === undefined ? <p>carregando</p> : pokemon.stats[0].base_stat}</p>
-    <LinearProgress variant="determinate"  value={pokemon.stats !== undefined ?pokemon.stats[0].base_stat:"" } />
-    <p>{pokemon.stats === undefined ? "" : pokemon.stats[1].stat.name}: {pokemon.stats === undefined ? <p>carregando</p> : pokemon.stats[1].base_stat}</p>
-    <LinearProgress variant="determinate"  value={pokemon.stats !== undefined ?pokemon.stats[1].base_stat:"" } />
-    <p>{pokemon.stats === undefined ? "" : pokemon.stats[2].stat.name}: {pokemon.stats === undefined ? <p>carregando</p> : pokemon.stats[2].base_stat}</p>
-    <LinearProgress variant="determinate"  value={pokemon.stats !== undefined ?pokemon.stats[2].base_stat:"" } />
-    <p>{pokemon.stats === undefined ? "" : pokemon.stats[3].stat.name}: {pokemon.stats === undefined ? <p>carregando</p> : pokemon.stats[3].base_stat}</p>
-    <LinearProgress variant="determinate"  value={pokemon.stats !== undefined ?pokemon.stats[3].base_stat:"" } />
-    <p>{pokemon.stats === undefined ? "" : pokemon.stats[4].stat.name}: {pokemon.stats === undefined ? <p>carregando</p> : pokemon.stats[4].base_stat}</p>
-    <LinearProgress variant="determinate"  value={pokemon.stats !== undefined ?pokemon.stats[4].base_stat:"" } />
-    <p>{pokemon.stats === undefined ? "" : pokemon.stats[5].stat.name}: {pokemon.stats === undefined ? <p>carregando</p> : pokemon.stats[5].base_stat}</p>
-    <LinearProgress variant="determinate"  value={pokemon.stats !== undefined ?pokemon.stats[5].base_stat:"" } />
-    </DivBaseStats>
+          <DivInfos>
+            <p>#{pokemon.id}</p>
+            <h3>
+              {pokemon.name === undefined ? "" : pokemon.name[0].toUpperCase()}
+              {pokemon.name === undefined ? "" : pokemon.name.slice(1)}
+            </h3>
+            <p>
+              {pokemon.types === undefined ? "" : pokemon.types[0]?.type.name}
+            </p>
+            <p>
+              {pokemon.types === undefined ? "" : pokemon.types[1]?.type.name}
+            </p>
+            <img
+              alt={pokemon.name}
+              src={
+                pokemon.sprites === undefined ? (
+                  <p>carregando</p>
+                ) : (
+                  pokemon.sprites.other["official-artwork"].front_default
+                )
+              }
+              height={110}
+              width={110}
+            />
+          </DivInfos>
 
-    <div>
-    <p>#{pokemon.id}</p>
-    <h4>
-    {pokemon.name === undefined ?"" : pokemon.name[0].toUpperCase()}
-    {pokemon.name === undefined ?"" :pokemon.name.slice(1)}
-    </h4>
-    <p>{pokemon.types === undefined ? "" : pokemon.types[0]?.type.name}</p>
-    <p>{pokemon.types === undefined ? "" :pokemon.types[1]?.type.name}</p>
-    <img
-          alt={pokemon.name}
-          src={pokemon.sprites === undefined? <p>carregando</p> : pokemon.sprites.other["official-artwork"].front_default}
-          height={110}
-          width={110}
-        />
-
+          <DivMoves>
+            <h3>Moves</h3>
+            <a>
+              {pokemon.moves === undefined ? "" : pokemon.moves[0].move.name}
+            </a>
+            <a>
+              {pokemon.moves === undefined ? "" : pokemon.moves[1].move.name}
+            </a>
+            <a>
+              {pokemon.moves === undefined ? "" : pokemon.moves[2].move.name}
+            </a>
+            <a>
+              {pokemon.moves === undefined ? "" : pokemon.moves[4].move.name}
+            </a>
+          </DivMoves>
+        </CardDetalhes>
+      </main>
     </div>
-
-    <div>
-    <h4>Moves</h4>
-    <p>{pokemon.moves === undefined ? "": pokemon.moves[0].move.name}</p>
-    <p>{pokemon.moves === undefined ? "":pokemon.moves[1].move.name}</p>
-    <p>{pokemon.moves === undefined ? "":pokemon.moves[2].move.name}</p>
-    <p>{pokemon.moves === undefined ? "":pokemon.moves[4].move.name}</p>
-    </div>
-    
-    </CardDetalhes>
-      </div>
-  )
+  );
 }
-  

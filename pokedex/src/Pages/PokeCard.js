@@ -73,11 +73,16 @@ const DivBotão = styled.div`
 const BtnDetalhes = styled.button`
 display: flex;
 flex-direction: row;
+color: #fff;
+margin-top: 5px;
+text-decoration: underline;
+font-family: 'Tahoma';
+background: none;
+border: none;
+font-weight: bold;
+font-size: 14px;
+z-index: 2;
 
-padding: 4px 10px;
-border-radius:8px ;
-background-color: white;
-border: 1px solid white;
 `
 
 const BtnCapturar = styled.button`
@@ -177,7 +182,7 @@ export default function PokeCard({ poke, setPokedex }) {
               setClick(true)
             }}
           >
-           Capturar!
+           <b>Capturar!</b>
           </BtnCapturar>
         </DivBotão>
     
