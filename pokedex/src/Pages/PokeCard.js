@@ -69,12 +69,8 @@ const DivTipos = styled.div`
   padding: 5px 8px;
   gap: 17px;
   position: absolute;
-
-  p {
-    border: 1px dashed rgba(255, 255, 255, 0.47);
-    border-radius: 8px;
-  }
 `
+
 const DivInfo = styled.div`
   display: flex;
   justify-content: space-between;
@@ -103,6 +99,9 @@ border: none;
 font-weight: bold;
 font-size: 14px;
 z-index: 2;
+:hover{
+  cursor: pointer;
+}
 
 `
 
@@ -115,6 +114,15 @@ border-radius:8px ;
 background-color: white;
 border: 1px solid white;
 margin-bottom:10px;
+:hover{
+  cursor: pointer;
+}
+`
+
+const IconeTipo = styled.img `
+ width: 80px;
+ border: 1px dashed rgba(255, 255, 255, 0.47);
+ border-radius: 8px;
 `
 
 const corBackGround = (type) => {
@@ -171,41 +179,41 @@ export default function PokeCard({ poke, setPokedex }) {
     poke.types.map((tipo)=>{
       switch (tipo.type.name) {
         case 'normal':
-          return <img src={normal}/>
+          return <IconeTipo src={normal}/>
         case 'fighting':
-          return <img src={fighting}/>
+          return <IconeTipo src={fighting}/>
         case 'flying':
-          return <img src={flying}/>
+          return <IconeTipo src={flying}/>
         case 'poison':
-          return <img src={poison}/>
+          return <IconeTipo src={poison}/>
         case 'ground':
-          return <img src={ground}/>
+          return <IconeTipo src={ground}/>
         case 'rock':
-          return <img src={rock}/>
+          return <IconeTipo src={rock}/>
         case 'bug':
-          return <img src={bug}/>
+          return <IconeTipo src={bug}/>
         case 'ghost':
-          return <img src={ghost}/>
+          return <IconeTipo src={ghost}/>
         case 'steel':
-          return <img src={steel}/>
+          return <IconeTipo src={steel}/>
         case 'fire':
-          return <img src={fire}/>
+          return <IconeTipo src={fire}/>
         case 'water':
-          return <img src={water}/>
+          return <IconeTipo src={water}/>
         case 'grass':
-          return <img src={grass}/>
+          return <IconeTipo src={grass}/>
         case 'electric':
-          return <img src={electric}/>
+          return <IconeTipo src={electric}/>
         case 'psychic':
-          return <img src={psychic}/>
+          return <IconeTipo src={psychic}/>
         case 'ice':
-          return <img src={ice}/>
+          return <IconeTipo src={ice}/>
         case 'dragon':
-          return <img src={dragon}/>
+          return <IconeTipo src={dragon}/>
         case 'dark':
-          return <img src={dark}/>
+          return <IconeTipo src={dark}/>
         case 'fairy':
-          return <img src={fairy}/>
+          return <IconeTipo src={fairy}/>
         default:
           return 'black'
       }
@@ -242,7 +250,7 @@ export default function PokeCard({ poke, setPokedex }) {
       </DivImagem>
       <DivInfo>
         <DivTipos>
-          <p>{pokeType}</p>
+        {pokeType}
         </DivTipos>
 
       </DivInfo>
