@@ -41,6 +41,7 @@ const Card = styled.div`
   width: 420px;
   border-radius: 12px;
   margin-bottom: 6px;
+  color: white;
 `
 
 const NomeCard = styled.p`
@@ -49,7 +50,6 @@ const NomeCard = styled.p`
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
-    /* gap: 20px; */
     font-size: 20px;
     padding-left: 10px;
     position: absolute;
@@ -62,7 +62,6 @@ const NumeroCard = styled.p`
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
-    /* gap: 20px; */
     font-size: 22px;
     padding-left: 10px;
     position: absolute;
@@ -81,12 +80,8 @@ const DivTipos = styled.div`
   padding: 5px 8px;
   gap: 17px;
   position: absolute;
-
-  p {
-    border: 1px dashed rgba(255, 255, 255, 0.47);
-    border-radius: 8px;
-  }
 `
+
 const DivInfo = styled.div`
   display: flex;
   justify-content: space-between;
@@ -108,7 +103,20 @@ const IconeTipo = styled.img `
  border: 1px dashed rgba(255, 255, 255, 0.47);
  border-radius: 8px;
 `
-
+const BtnDeletar = styled.button`
+display: flex;
+flex-direction: row;
+margin-left: 10px;
+padding: 4px 10px;
+border-radius:8px ;
+background-color: red;
+border: 1px solid white;
+margin-bottom:10px;
+color: white;
+:hover{
+  cursor: pointer;
+}
+`
 
   const corBackGround = (type) => {
     switch (type) {
@@ -231,7 +239,7 @@ const IconeTipo = styled.img `
         </DivTipos>
         </DivInfo>
         <DivBotão>
-    <button onClick={()=>removerDaPokedex(poke)}>Remover</button>
+    <BtnDeletar onClick={()=>removerDaPokedex(poke)}>Remover</BtnDeletar>
     </DivBotão>
     </Card>
     

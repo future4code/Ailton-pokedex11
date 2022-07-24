@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import Header from "../components/Header";
+import HeaderPokedex from "../components/HeaderPokedex";
 import LinearProgress from "@mui/material/LinearProgress";
 import bug from '../imgs/Bug.png'
 import dark from '../imgs/Dark.png'
@@ -35,6 +35,7 @@ const CardDetalhes = styled.div`
   width: 80vw;
   padding-right: 10px;
   padding-bottom: 15px;
+  color: white  ;
 `;
 
 const DivImgs = styled.div`
@@ -129,8 +130,7 @@ const corBackGround = (type) => {
 
 export default function Details() {
   const params = useParams();
-  const [pokemon, setPokemon] = useState([]);
-  const navigate = useNavigate();
+  const [pokemon, setPokemon] = useState([])
 
   useEffect(() => {
     axios
@@ -146,7 +146,7 @@ export default function Details() {
 
   return (
     <div>
-      <Header />
+      <HeaderPokedex   />
       <main>
         <div>
           <h2>DETALHES</h2>
