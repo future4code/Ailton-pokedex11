@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { goToPokedex, goToHomePage } from "../Router/coordinator";
+import { goToPokedex } from "../Router/coordinator";
 import Titulo from "../components/poketitulo.png";
 import { createGlobalStyle } from "styled-components";
 
@@ -14,14 +14,14 @@ const GlobalStyle = createGlobalStyle`
   `;
 
 const Head = styled.div`
-height: 18vh;
-  display: flex;
-  justify-content: center;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px dotted black;
-  padding-right: 15px;
-  padding-left: 70px;
+   height: 18vh;
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dotted black;
+    padding-right: 15px;
+    padding-left: 540px;
 `;
 
 const BotaoHeader = styled.button`

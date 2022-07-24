@@ -25,7 +25,7 @@ const Head = styled.div`
 const BotaoHeader = styled.button`
     background: #33A4F5;
     border-radius: 8px;
-    border: 1px solid #33A4F5;
+    border: none;
     width: 160px;
     height: 40px;
     font-family: 'Tahoma';
